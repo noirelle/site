@@ -2,11 +2,17 @@ baseURL: https://example.org/
 languageCode: en-us
 title: Noir's Commonplace
 
+enableEmoji: true
+enableGitInfo: true
+
+markup:
+  highlight:
+    style: github
+
 disableKinds:
+  - taxonomy
+  - term
   - sitemap
 
 permalinks:
   pages: /:slug
-
-taxonomy:
-  tags: tags

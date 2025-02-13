@@ -12,9 +12,13 @@
   :root {
     -webkit-text-size-adjust: none;
 
-    --bg: #faf4ed;
-    --fg: #575279;
+    --bg: #fefefe;
+    --bgs: hsl(0, 0%, 96%);
+    --fg: #282828;
     --ln: #286983;
+    --lnv: #907aa9;
+
+    --br: #f4ede8;
   }
 
   *,
@@ -26,51 +30,157 @@
   }
 
   body {
-    font-family: 'Crimson Pro', serif;
     background-color: var(--bg);
     color: var(--fg);
     line-height: 1.4;
-    text-wrap: pretty;
+    font-family: "Inter", Verdana, sans-serif;
   }
 
-  main {
-    max-width: 68ch;
+  p {
+    font-family: "Crimson Pro", Georgia, serif;
+    /*font-size: .90rem;*/
+    text-wrap-style: pretty;
+  }
+
+  code {
+    font-family: "Jetbrains Mono", monospace;
+    font-size: 70%;
+    width: 100%;
   }
 
   a {
     color: var(--ln);
+    text-decoration-color: hsl(from var(--ln) h s l / 20%);
+    text-underline-offset: 4px;
+    text-decoration-thickness: .8px;
+  }
+
+  a:visited {
+    color: var(--lnv);
+    text-decoration-color: hsl(from var(--lnv) h s l / 20%);
+  }
+
+  header>*,
+  article>*,
+  footer>* {
+    margin-block: 1em 0;
+    margin-inline: 1.4rem;
+  }
+
+  header {
+    max-width: 68ch;
+  }
+
+  header p {
+    display: flex;
+    gap: .6em;
+    align-items: center;
+  }
+
+  header p:first-of-type {
+    margin-block: 1.4rem 0;
+  }
+
+  header img {
+    border-radius: 4px;
+  }
+
+  article,
+  footer {
+    max-width: 60ch;
+    margin-block: 4rem 1.8rem;
+  }
+
+  article img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  article .highlight {
+    margin-block: 1rem;
+    border-top: 1.3px solid var(--br);
+    border-bottom: 1.3px solid var(--br);
+  }
+
+  #toc {
+    background-color: var(--bgs);
+    padding: .4rem .8rem;
+  }
+
+  #toc ul {
+    margin-left: 1.4rem;
+    list-style: upper-roman outside;
+  }
+
+  blockquote {
+    border-left: 2px solid var(--ln);
+    padding-left: 2ch;
+  }
+
+  figure {
+    margin-top: 1.4rem;
+    margin-inline: 0;
+  }
+
+  figure p {
+    color: hsl(from var(--fg) h s l / 86%);
+    font-size: 80%;
+    margin-top: .4rem;
+    margin-inline: 1.4rem;
+  }
+
+  footer #commitinfo,
+  pre {
+    background-color: var(--bgs);
+    padding-block: .8rem;
+    padding-inline: 1rem;
+    overflow: scroll;
+  }
+
+  footer #commitinfo code {
+    display: block;
+    overflow: scroll;
+  }
+
+  article p:has(img),
+  footer #commitinfo,
+  article .highlight {
+    margin-inline: 0;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    font-family: 'Inter', sans-serif;
+    margin-block: 1.4em 0;
     line-height: 1.2;
+    text-wrap-style: balance;
   }
 
   h1 {
     font-weight: 900;
   }
 
-  article {
-    padding-bottom: 4rem;
-  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: hsl(0, 0%, 8%);
+      --fg: hsl(0, 0%, 90%);
+      --bgs: hsl(0, 0%, 16%);
+      --ln: hsl(from #31748f h s 60%);
+      --lnv: hsl(from #907aa9 h s 60%);
+    }
 
-  article>* {
-    margin-block-start: 1em;
-    margin-inline: 1.4rem;
-  }
+    p {
+      color: hsl(0, 0%, 80%);
+    }
 
-  article>header {
-    margin-block: 4rem;
-  }
+    article img {
+      filter: brightness(80%);
+    }
 
-  blockquote {
-    border-left: 3px dotted var(--ln);
-    padding-left: 2ch;
-    padding-block: .40rem;
-    font-style: italic;
+    blockquote {
+      border-color: var(--lnv);
+    }
   }
 </style>
 

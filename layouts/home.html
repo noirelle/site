@@ -1,9 +1,24 @@
 {{ define "main" }}
+<header>
+  <p>{{ site.Title }}</p>
+  <h1>{{ .Title | title }}</h1>
+  <p>
+    <img src='{{ (resources.GetMatch "media/yoru.png").Permalink }}' width="28px">
+    <span>@noirelle</span>
+  </p>
+</header>
 <article>
-  <header>
-    <p>{{ site.Title }}</p>
-    <h1>{{ .Title }}</h1>
-  </header>
   {{ .Content }}
+  <footer>
+    {{ with .GitInfo }}
+    <section id="commitinfo">
+      <code>commit {{ .Hash }}</code>
+      <code>Author: {{ .AuthorName }} &lt;nouralivre [at] gmail.com&gt;</code>
+      <code>Date: {{ .CommitDate.Format "Mon Jan 2 15:04:05 2006" }}</code>
+      <code>&nbsp;</code>
+      <code>{{ .Subject }}</code>
+    </section>
+    {{ end }}
+  </footer>
 </article>
 {{ end }}
